@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutosService } from '../produtos.service';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
+import{AngularFireStorage} from '@angular/fire/storage';
 
 
 
@@ -20,12 +21,13 @@ export class DashboardProdutosComponent implements OnInit {
   produtosDescription: string;
   produtosPrice: number;
   produtosType: boolean;
+  filePath:String;
   SearchType= '';
   Type = '';
   SortDirection = 'asc';
   SortbyParam = '';
 
-  constructor(private produtosService : ProdutosService) { }
+  constructor(private produtosService : ProdutosService, private afStorage: AngularFireStorage) { }
   filterPost = '';
   ngOnInit(){
     this.produtosService.read_Produtos().subscribe(data => {
@@ -37,6 +39,7 @@ export class DashboardProdutosComponent implements OnInit {
       Description: e.payload.doc.data()['Description'],
       Price: e.payload.doc.data()['Price'],
       Type: e.payload.doc.data()['Type'],
+      Image: e.payload.doc.data()['Image'],
     };
     })
     console.log(this.produto);
@@ -48,6 +51,7 @@ export class DashboardProdutosComponent implements OnInit {
       record['Description'] = this.produtosDescription;
       record['Price'] = this.produtosPrice;
       record['Type'] = this.produtosType;
+
       this.produtosService.create_NewProdutos(record).then(resp => {
         this.produtosName="";
         this.produtosDescription = "";
@@ -77,6 +81,7 @@ export class DashboardProdutosComponent implements OnInit {
       record['Price']= recordRow.EditPrice;
       record['Type']= recordRow.EditType;
       this.produtosService.update_Produtos(recordRow.id, record);
+      
       recordRow.isEdit = false;
     }
     
@@ -93,6 +98,15 @@ export class DashboardProdutosComponent implements OnInit {
       } else {
         this.SortDirection = 'desc';
       }
+    }
+    upload($event) {    
+      this.filePath = $event.target.files[0]
+    }
+    uploadImage(){
+      console.log(this.filePath)
+      this.afStorage.upload('/images'+Math.random()+this.filePath, this.filePath);
+      
+        
     }
     
 

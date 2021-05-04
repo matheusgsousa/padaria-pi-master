@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -57,6 +58,7 @@ import { DashboardProdutosComponent } from './dashboard-produtos/dashboard-produ
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     routing,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutosService } from '../produtos.service';
 import{AngularFireStorage} from '@angular/fire/storage';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-produtos',
@@ -18,13 +19,16 @@ export class ProdutosComponent implements OnInit {
   produtosDescription: string;
   produtosPrice: number;
   produtosType: boolean;
+  produtosImage: string;
   alert:boolean=false;
+  filePath:String;
+ 
 
  
 
 
 
-  constructor(private produtosService : ProdutosService) { }
+  constructor(private produtosService : ProdutosService, private afStorage: AngularFireStorage) { }
 
   ngOnInit(){
     this.produtosService.read_Produtos().subscribe(data => {
@@ -70,6 +74,7 @@ export class ProdutosComponent implements OnInit {
       record.EditDescription = record.Description;
       record.EditPrice = record.Price;
       record.EditType = record.Type;
+
     }
     UpdateRecord(recordRow){
       let record = {};
@@ -80,7 +85,16 @@ export class ProdutosComponent implements OnInit {
       this.produtosService.update_Produtos(recordRow.id, record);
       recordRow.isEdit = false;
     }
-
+    upload($event) {    
+      this.filePath = $event.target.files[0]
+    }
+    uploadImage(){
+      console.log(this.filePath)
+      this.afStorage.upload('/images'+Math.random()+this.filePath, this.filePath);
+      
+        
+    }
+    
     
     
     
@@ -89,3 +103,4 @@ export class ProdutosComponent implements OnInit {
 
 
 }
+
