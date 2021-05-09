@@ -51,6 +51,7 @@ export class ProdutosComponent implements OnInit {
       record['Description'] = this.produtosDescription;
       record['Price'] = this.produtosPrice;
       record['Type'] = this.produtosType;
+      record['Image'] = 'https://firebasestorage.googleapis.com/v0/b/projeto-integrador-v-547f7.appspot.com/o/'+this.uploadImage()+'?alt=media';
       this.produtosService.create_NewProdutos(record).then(resp => {
         this.produtosName="";
         this.produtosDescription = "";
@@ -89,10 +90,9 @@ export class ProdutosComponent implements OnInit {
       this.filePath = $event.target.files[0]
     }
     uploadImage(){
-      console.log(this.filePath)
-      this.afStorage.upload('/images'+Math.random()+this.filePath, this.filePath);
-      
-        
+      let url = Math.random()  + ''
+      this.afStorage.upload(url, this.filePath);
+      return url
     }
     
     
