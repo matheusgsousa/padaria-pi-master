@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+}
+
+#telaLogin {
+  width: 350px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 5px 30px rgb(195, 195, 195);
+}
+.btn-dark {
+  background-color: #f95;
+}
+.btn-dark:hover {
+  background-color: #f95;
+}
+h2 {
+  font-weight: 600;
+  margin-bottom: 2rem;
+  position: relative;
+}
+h2::before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 25px;
+  bottom: 3px;
+  left: 0;
+  border-radius: 8px;
+  background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field input {
+  outline: none;
+  font-size: 0.9rem;
+  color: #000;
+}
+.input-field input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+form input[type="submit"] {
+  margin-right: 25px;
+  margin-left: 25px;
+  margin-top: 2rem;
+  padding: 0.4rem;
+  background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+  cursor: pointer;
+  font-size: 0.9;
+  font-weight: 300;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  color: white;
+}
+form input[type="submit"]:hover {
+  letter-spacing: 0.5px;
+}

@@ -37,6 +37,9 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { DashboardProdutosComponent } from './dashboard-produtos/dashboard-produtos.component';
+import { FirebaseAuthService } from './services/firebase-auth.service';
+import { PerfilComponent } from './perfil/perfil.component';
+
 
 
 
@@ -46,6 +49,7 @@ import { DashboardProdutosComponent } from './dashboard-produtos/dashboard-produ
     HomeComponent,
     LoginComponent,
     CadastroComponent,
+    PerfilComponent,
     PedidosComponent,
     NavbarComponent,
     TopbarComponent,
@@ -54,11 +58,13 @@ import { DashboardProdutosComponent } from './dashboard-produtos/dashboard-produ
     DashboardProdutosComponent,
     FilterPipe,
     SortPipe,
+    
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     routing,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -73,7 +79,6 @@ import { DashboardProdutosComponent } from './dashboard-produtos/dashboard-produ
     MatCardModule,
     MatMenuModule,
     MatSortModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
@@ -81,7 +86,7 @@ import { DashboardProdutosComponent } from './dashboard-produtos/dashboard-produ
     MatInputModule,
     AlertModule
   ],
-  providers: [],
+  providers: [FirebaseAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
