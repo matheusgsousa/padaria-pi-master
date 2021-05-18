@@ -12,24 +12,42 @@
 <body id="fundo">
   <div class="card" id="telaLogin">
     <div class="card-body">
-      <h2>Login</h2>
+      <h2>Cadastrar</h2>
       <form>
         <div class="input-field">
           <div class="mb-3">
             <label class="form-label"></label>
-            <input name="email" [(ngModel)]="email" type="text" class="form-control" placeholder="Seu E-mail" />
+            <input name="email" [(ngModel)]="email" type="text" class="form-control" placeholder=" E-mail" />
           </div>
         </div>
         <div class="input-field">
           <div class="mb-3">
             <label class="form-label"></label>
-            <input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="Sua senha" />
+            <input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="Senha" />
+          </div>
+        </div>
+        <div class="input-field">
+          <div class="mb-3">
+            <label class="form-label"></label>
+            <input name="text" [(ngModel)]="usuariosNome" class="form-control" placeholder="Nome" />
+          </div>
+        </div>
+
+        <div class="input-field">
+          <div class="mb-3">
+            <label class="form-label"></label>
+            <input name="text" [(ngModel)]="usuariosTelefone" type="number" class="form-control" placeholder="Telefone" />
           </div>
         </div>
         <div class="form-group text-center">
-          <input class="btn-lg" (click)="login()" type="submit" value="Entrar">
-          <input class="btn-lg" (click)="cadastrar()" type="submit" value="Cadastrar">
+
+          <input class="btn-lg" (click)="login()" type="submit" value="Entrar" [routerLink]="'/login'">
+          <input class="btn-lg" (click)="CreateRecord()" (click)="cadastrar()" type="submit" value="Cadastrar" id="submit">
+          <div *ngIf="isAlert" class="alert alert-success" role="alert">
+            {{alertMsg}}
+          </div>
         </div>
+
 
       </form>
     </div>

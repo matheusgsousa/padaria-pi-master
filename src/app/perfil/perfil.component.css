@@ -13,12 +13,15 @@ body {
   min-width: 100vw;
   display: flex;
 }
-
+#perfil-card {
+  margin-left: 15%;
+  position: absolute;
+}
 #telaLogin {
   width: 500px;
   position: absolute;
-  top: 40%;
-  left: 50%;
+  top: 700%;
+  left: 1000%;
   transform: translate(-50%, -50%);
   box-shadow: 1px 5px 30px rgb(195, 195, 195);
 }
