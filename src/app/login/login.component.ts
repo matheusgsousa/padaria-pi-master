@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FirebaseAuthService} from '../services/firebase-auth.service';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +12,9 @@ import {FirebaseAuthService} from '../services/firebase-auth.service';
 export class LoginComponent implements OnInit {
 email:string;
 password:string;
-  constructor(public auth: AngularFireAuth) { }
+  constructor(public auth: AngularFireAuth, private router: Router) { 
+
+  }
 
   ngOnInit(): void {
   }
@@ -20,13 +22,19 @@ password:string;
     this.auth.signInWithEmailAndPassword(this.email, this.password)
     .catch(error => console.log(error.code)
     )
-    .then(res => console.log(res));
+    .then(res => {
+      console.log(res);
+      this.router.navigateByUrl('/',{state:{ auth: true }});
+    });
   }
   cadastrar(){
     this.auth.createUserWithEmailAndPassword(this.email, this.password)
     .catch(error => console.log(error.code)
     )
-    .then(res => console.log(res));
+    .then(res => {
+      console.log(res);
+      this.router.navigateByUrl('/',{state:{ auth: true }});
+    })
   }
 
 }
