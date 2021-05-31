@@ -2,8 +2,8 @@
 import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store.service';
-
-
+import { NotifyAPIService } from '../notify-api.service';
+ 
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
@@ -13,8 +13,9 @@ export class PedidosComponent implements OnInit {
 
   pedidos: Array<any>;
   hiddenCompleteRequests: boolean;
+  quantidadeItens: number = 10;
 
-  constructor(private store: StoreService) {    
+  constructor(private store: StoreService, private notify: NotifyAPIService) {    
     this.hiddenCompleteRequests = false;
   }
 
@@ -24,6 +25,7 @@ export class PedidosComponent implements OnInit {
 
   changeStatus(id: string, newStatus: boolean){
     this.store.completeRequest(id,newStatus);
+    this.notify.chamarAPI(newStatus); 
   }
   changeVisibility(){
     this.hiddenCompleteRequests = !this.hiddenCompleteRequests;
@@ -33,4 +35,9 @@ export class PedidosComponent implements OnInit {
       return this.hiddenCompleteRequests&&!status;
     } else return true;
   }
+
+  setQuantidadeItens(num:number){
+    this.quantidadeItens = num;
+  }
+  
 }

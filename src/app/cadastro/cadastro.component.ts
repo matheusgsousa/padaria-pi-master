@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import {FirebaseAuthService} from '../services/firebase-auth.service';
 
 
@@ -18,7 +19,7 @@ usuariosTelefone:string;
 isAlert=false;
 alertMsg = "Usuário criado com sucesso";
 
-  constructor(private FirebaseAuthService: FirebaseAuthService, public auth: AngularFireAuth) { }
+  constructor(private FirebaseAuthService: FirebaseAuthService, public auth: AngularFireAuth, private router: Router) { }
 
   ngOnInit(){
     this.FirebaseAuthService.read_Usuarios().subscribe(data => {
@@ -56,13 +57,19 @@ alertMsg = "Usuário criado com sucesso";
     this.auth.signInWithEmailAndPassword(this.email, this.password)
     .catch(error => console.log(error.code)
     )
-    .then(res => console.log(res));
+    .then(res => {
+      console.log(res);
+      this.router.navigateByUrl('/',{state:{ auth: true }});
+    });
   }
   cadastrar(){
     this.auth.createUserWithEmailAndPassword(this.email, this.password)
     .catch(error => console.log(error.code)
     )
-    .then(res => console.log(res));
+    .then(res => {
+      console.log(res);
+      this.router.navigateByUrl('/',{state:{ auth: true }});
+    });
     
   }
 

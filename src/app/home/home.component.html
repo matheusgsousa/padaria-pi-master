@@ -1,1 +1,24 @@
-<router-outlet></router-outlet>
+<topbar></topbar>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <navbar></navbar>
+            </div>
+            <div class="col-9">
+                <h1>Minha padaria Online</h1>
+                <hr>
+                <div class="row mb-4">
+                    <label>Configura Mensagens para melhor experiência do seu cliente.</label>
+                    <button class="btn btn-primary ml-4" [routerLink]="['/configmessages']">Configurar
+                        Mensagens</button>
+                </div>
+
+                <div class="row">
+                    <label>Relatório da Padaria</label>
+                    <button class="btn btn-primary ml-4">Baixar Relatório</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -39,7 +39,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { DashboardProdutosComponent } from './dashboard-produtos/dashboard-produtos.component';
 import { FirebaseAuthService } from './services/firebase-auth.service';
 import { PerfilComponent } from './perfil/perfil.component';
-
+import { ConfigMessagesComponent } from './config-messages/config-messages.component';
 
 
 
@@ -58,7 +58,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     DashboardProdutosComponent,
     FilterPipe,
     SortPipe,
-    
+    ConfigMessagesComponent
 
   ],
   imports: [

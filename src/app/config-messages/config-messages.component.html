@@ -1,0 +1,31 @@
+<topbar></topbar>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <navbar></navbar>
+            </div>
+            <div class="col-9">
+                <h2 class="mb-5">Configure suas Mensagens</h2>
+                <label>Para melhor experiência do cliente configure aqui as mensagens padões de acordo com o
+                    assunto</label>
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Assunto</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Escreva aqui o assunto"
+                            [(ngModel)]="assunto">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Mensagem</span>
+                        </div>
+                        <textarea class="form-control" [(ngModel)]="mensagem"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-2 float-right" (click)="setMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+</section>
